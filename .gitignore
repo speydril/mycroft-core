@@ -30,7 +30,7 @@ utterances.txt
 scoreFile.txt
 sentiments.txt
 .env
-
+cloning/saved_models/
 # Created by unit tests
 test/unittests/skills/test_skill/settings.json
 test_conf.json
