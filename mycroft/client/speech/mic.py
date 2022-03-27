@@ -640,7 +640,6 @@ class ResponsiveRecognizer(speech_recognition.Recognizer):
 
             current_time = datetime.now()
             if audio_mean.value > 1000 and current_time > timedelta(seconds=5) + noise_timer:
-                LOG.info("##\t\thigh mic energy level")
                 noise_timer = current_time
                 emitter.emit("energy_level:too_high")
 
@@ -681,7 +680,6 @@ class ResponsiveRecognizer(speech_recognition.Recognizer):
 
             current_time = datetime.now()
             if audio_mean.value > 1000 and current_time > timedelta(seconds=5) + noise_timer:
-                LOG.info("##\t\thigh mic energy level")
                 noise_timer = current_time
                 emitter.emit("energy_level:too_high")
 

@@ -337,12 +337,6 @@ class IntentService:
 
             # List of functions to use to match the utterance with intent.
             # These are listed in priority order.
-            # match_funcs = [
-            #     self._converse, padatious_matcher.match_high,
-            #     self.adapt_service.match_intent, self.fallback.high_prio,
-            #     padatious_matcher.match_medium, self.fallback.medium_prio,
-            #     padatious_matcher.match_low, self.fallback.low_prio
-            # ]
             match_funcs = [
                 self._converse, padatious_matcher.match_high,
                 self.adapt_service.match_intent,
@@ -362,7 +356,6 @@ class IntentService:
             utteranceFile.write(f"{utterances[0]},{current_time},{sentiment}\n")
             utteranceFile.close()
 
-            
             match = None
             with stopwatch:
                 # Loop through the matching functions until a match is found.
@@ -400,7 +393,7 @@ class IntentService:
                             self.bus.emit(reply)
 
                 elif self.wakeword_found:
-                    LOG.info("##\t\tlow score - request denied")
+                    LOG.info("Judge Alexa\t|\tLow score - request denied")
                     data = {
                         "utterances" : ['hcslewreduaK'],
                         "lang" : 'en-US',
@@ -412,7 +405,7 @@ class IntentService:
                     taskbot_reply = newMsg.reply(judgealexa_intent.intent_type, judgealexa_intent.intent_data)
                     self.bus.emit(taskbot_reply)
                 else:
-                    LOG.info("Can't answer at this time")
+                    LOG.info("Judge Alexa\t|\tCan't answer at this time")
             else:
                 # Nothing was able to handle the intent
                 # Ask politely for forgiveness for failing in this vital task
