@@ -794,7 +794,7 @@ class ResponsiveRecognizer(speech_recognition.Recognizer):
         audio_data = self._create_audio_data(frame_data, source)
         emitter.emit("recognizer_loop:record_end")
         if self.save_utterances:
-            LOG.info("Recording utterance")
+            LOG.info("recording utterance")
             stamp = str(datetime.datetime.now())
             filename = "/{}/{}.wav".format(
                 self.saved_utterances_dir,

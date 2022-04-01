@@ -16,6 +16,7 @@
 from copy import copy
 import time
 import datetime
+import os
 from mycroft.util import record
 from flair.data import Sentence
 from flair.models.text_classification_model import TextClassifier
@@ -352,8 +353,9 @@ class IntentService:
 
             t = time.localtime()
             current_time = time.strftime("%d.%m.%Y %H:%M:%S", t)
-            utteranceFile = open("./utterances.txt", "a")
+            utteranceFile = open("./utterances.txt", "a", os.O_NONBLOCK)
             utteranceFile.write(f"{utterances[0]},{current_time},{sentiment}\n")
+            utteranceFile.flush()
             utteranceFile.close()
 
             match = None
